@@ -93,8 +93,9 @@ def main():
             print(name + '\t体温上报成功')
             msg += name + '\t体温上报成功' + '\n\n'
         else:
-           print(name + '\t未主动上报一次来完善疫苗信息')
-           msg += name + '\t未主动上报一次来完善疫苗信息' + '\n\n'
+           error = True
+           print(name + '\t请主动上报一次，来完善新增信息')
+           msg += name + '\t请主动上报一次，来完善新增信息' + '\n\n'
         driver.quit()
         return
 
