@@ -4,7 +4,7 @@
 
 **利用GitHub的action进行健康上报**
 
-支持定时上报以及start上报（star一下自己fork后的项目就会启动上报action）
+支持定时上报以及star上报（star一下自己fork后的项目就会启动上报action）
 
 **没有更新疫苗信息的请手动上报一次更新自己的疫苗信息**
 
