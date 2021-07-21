@@ -149,11 +149,11 @@ if __name__ == '__main__':
             break
 
     if error:
-        subject = '体温上报\t失败'
+        subject = name + '\t' + '体温上报\t失败'
         server_post(subject, msg, serverchan_sckey)
         kutui_post(subject, msg, kutui_key)
 
     else:
-        subject = '体温上报\t成功'
+        subject = name + '\t' + '体温上报\t成功'
         server_post(subject, msg, serverchan_sckey)
         kutui_post(subject, msg, kutui_key)
