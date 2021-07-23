@@ -93,8 +93,9 @@ def main():
             print(name + '\t体温上报成功')
             msg += name + '\t体温上报成功' + '\n\n'
         else:
-           print(name + '\t未主动上报一次来完善疫苗信息')
-           msg += name + '\t未主动上报一次来完善疫苗信息' + '\n\n'
+           error = True
+           print(name + '\t请主动上报一次，来完善新增信息')
+           msg += name + '\t请主动上报一次，来完善新增信息' + '\n\n'
         driver.quit()
         return
 
@@ -149,11 +150,11 @@ if __name__ == '__main__':
             break
 
     if error:
-        subject = '体温上报\t失败'
+        subject = name + '\t' + '体温上报\t失败'
         server_post(subject, msg, serverchan_sckey)
         kutui_post(subject, msg, kutui_key)
 
     else:
-        subject = '体温上报\t成功'
+        subject = name + '\t' + '体温上报\t成功'
         server_post(subject, msg, serverchan_sckey)
         kutui_post(subject, msg, kutui_key)
