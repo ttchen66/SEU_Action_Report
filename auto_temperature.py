@@ -133,7 +133,7 @@ if __name__ == '__main__':
     else:
         serverchan_sckey = ""
 
-    time.sleep(random.randint(0, 300))
+    #time.sleep(random.randint(0, 300))
     
     
     error = False
@@ -146,7 +146,7 @@ if __name__ == '__main__':
         t += 10
         msg = '体温上报' + '\n\n'
         main()
-        if t > 80:
+        if t > 50:
             break
 
     if error:
