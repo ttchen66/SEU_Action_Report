@@ -1,4 +1,9 @@
-numpy
-PyExecJS
-requests
-selenium
+certifi==2021.5.30
+charset-normalizer==2.0.4
+idna==3.2
+numpy==1.21.2
+PyExecJS==1.5.1
+requests==2.26.0
+selenium==3.141.0
+six==1.16.0
+urllib3==1.26.6
