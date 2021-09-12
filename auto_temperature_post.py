@@ -45,11 +45,7 @@ if __name__ == '__main__':
             district = ''
 
         res = seu_clockin(username, password, province, city, district, LAT, LON)
-        if res == "登陆失败":
-            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n' + res + '\n\n' + "伪造地址：" + province + city + district
-            server_post(name + '\t' + '体温上报\t失败', person_msg, serverchan)
-            sys.exit(1)
-        elif res == "打卡成功!":
+        if res == "打卡成功!":
             person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n体温上报成功' + '\n\n' + "伪造地址：" + province + city + district
             server_post(name + '\t' + '体温上报\t成功', person_msg, serverchan)
         else:
