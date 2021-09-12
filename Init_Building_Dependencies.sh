@@ -1,1 +1,2 @@
-pip3 install  requests numpy PyExecJS
+sudo pip3 install setuptools
+sudo pip3 install  requests numpy PyExecJS
