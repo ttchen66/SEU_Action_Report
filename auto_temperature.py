@@ -15,23 +15,22 @@ chrome_options.add_argument('--no-sandbox')
 
 def main():
     global t
-    global t
     global msg
     global error
     global username
     global password
     global name
-    global teacher
+    global kutui, serverchan
     try:
         date_time = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
         print("时间:", date_time)
         msg += "时间:\t" + str(date_time) + '\n\n'
 
-        driver = webdriver.Chrome(executable_path='chromedriver', chrome_options=chrome_options)
+        driver = webdriver.Chrome(executable_path='chromedriver', options=chrome_options)
 
         url = "http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/index.do?t_s=1583641506865#/dailyReport"
         driver.get(url)
-        print(name + '\t' + username + '\t' + password + '\t' + "开始体温上报")
+        print(name + '\t' + "开始体温上报")
         time.sleep(t)
 
         checkUrl = driver.current_url
@@ -100,8 +99,8 @@ def main():
         return
 
     except Exception as e:
-        msg += name + '\t' + username + '\t' + password + '\t体温上报失败' + '\n\n' + str(e) + '\n\n'
-        print(name + '\t' + username + '\t' + password + '\t体温上报失败' + '\n' + str(e))
+        msg += name + '\t' + username + '\t体温上报失败' + '\n\n' + str(e) + '\n\n'
+        print(name + '\t' + username + '\t体温上报失败' + '\n' + str(e))
         error = True
         driver.quit()
         return
@@ -111,30 +110,33 @@ if __name__ == '__main__':
     if "ID" in os.environ:
         username = os.environ["ID"]
     else:
-        sys.exit()
+        sys.exit(1)
 
     if "PASSWORD" in os.environ:
         password = os.environ["PASSWORD"]
     else:
-        sys.exit() 
+        sys.exit(1) 
 
     if "NAME" in os.environ:
         name = os.environ["NAME"]
     else:
         name = "无名氏"
 
+    kutui = serverchan = False
+
     if "KU" in os.environ:
         kutui_key = os.environ["KU"]
+        kutui = True
     else:
         kutui_key = ""
 
     if "SERVERCHAN" in os.environ:
         serverchan_sckey = os.environ["SERVERCHAN"]
+        serverchan = True
     else:
         serverchan_sckey = ""
 
     #time.sleep(random.randint(0, 300))
-    
     
     error = False
     t = 30
@@ -151,10 +153,11 @@ if __name__ == '__main__':
 
     if error:
         subject = name + '\t' + '体温上报\t失败'
-        server_post(subject, msg, serverchan_sckey)
-        kutui_post(subject, msg, kutui_key)
+        if serverchan: server_post(subject, msg, serverchan_sckey)
+        if kutui: kutui_post(subject, msg, kutui_key)
+        sys.exit(1)
 
     else:
         subject = name + '\t' + '体温上报\t成功'
-        server_post(subject, msg, serverchan_sckey)
-        kutui_post(subject, msg, kutui_key)
+        if serverchan: server_post(subject, msg, serverchan_sckey)
+        if kutui: kutui_post(subject, msg, kutui_key)
