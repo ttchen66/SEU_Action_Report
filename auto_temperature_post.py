@@ -35,7 +35,6 @@ if __name__ == '__main__':
                 province = json_data['result']['addressComponent']['province']
                 city = json_data['result']['addressComponent']['city']
                 district = json_data['result']['addressComponent']['district']
-                print("伪造地址：" + province + city + district)
             else:
                 province = ''
                 city = ''
@@ -47,14 +46,14 @@ if __name__ == '__main__':
 
         res = seu_clockin(username, password, province, city, district, LAT, LON)
         if res == "登陆失败":
-            print("登陆失败", name, username)
+            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n' + res + '\n\n' + "伪造地址：" + province + city + district
+            server_post(name + '\t' + '体温上报\t失败', person_msg, serverchan)
+            sys.exit(1)
         elif res == "打卡成功!":
-            print(name + '\t体温上报成功')
-            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n体温上报成功' + '\n\n'
+            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n体温上报成功' + '\n\n' + "伪造地址：" + province + city + district
             server_post(name + '\t' + '体温上报\t成功', person_msg, serverchan)
         else:
-            print(name + '\t' + res)
-            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n' + res + '\n\n'
+            person_msg = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n\n' + res + '\n\n' + "伪造地址：" + province + city + district
             server_post(name + '\t' + '体温上报\t失败', person_msg, serverchan)
             sys.exit(1)
 

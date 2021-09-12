@@ -98,7 +98,6 @@ def report(sess, province, city, district, LAT, LON, username):
             post_info[key] = ''
 
     post_info['DZ_DQWZ'] = DZ_DQWZ
-    print("前一日地址:" + post_info['DZ_DQWZ'])
     post_info['DZ_SFYBH'] = '0'
     post_info['DZ_DBRQ'] = time.strftime("%Y-%m-%d", time.localtime())
     post_info['CREATED_AT'] = time.strftime("%Y-%m-%d %H:%M", time.localtime())
@@ -113,7 +112,6 @@ def report(sess, province, city, district, LAT, LON, username):
         post_info['DZ_DQWZ_SF'] = province
         post_info['DZ_DQWZ_CS'] = city
         post_info['DZ_DQWZ_JD'] = LAT  # 纬度
-    print("上报地址：" + post_info['DZ_DQWZ'])
     save_url = 'http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/modules/dailyReport/T_REPORT_EPIDEMIC_CHECKIN_SAVE.do'
     save = sess.post(save_url, data=post_info, headers=header)
     if save.status_code == 200:
