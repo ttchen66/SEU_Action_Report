@@ -1,0 +1,4 @@
+numpy
+PyExecJS
+requests
+selenium
