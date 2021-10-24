@@ -25,6 +25,6 @@ jobs:
       run: |
         sudo apt-get install python3-setuptools -y
         git clone https://github.com/quzard/SEU_Action_Report.git
-        mv SEU_Action_Report/* .
+        cp -r SEU_Action_Report/* .
         pip3 install -r requirements.txt
         python3 auto_temperature_post.py
