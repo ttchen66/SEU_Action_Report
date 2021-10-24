@@ -23,5 +23,8 @@ jobs:
         TZ: Asia/Shanghai
         INFORM: ${{ secrets.INFORM }}
       run: |
-        bash Init_Building_Dependencies.sh
+        sudo apt-get install python3-setuptools -y
+        git clone https://github.com/quzard/SEU_Action_Report.git
+        mv SEU_Action_Report/* .
+        pip3 install -r requirements.txt
         python3 auto_temperature_post.py
