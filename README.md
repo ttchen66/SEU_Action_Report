@@ -4,6 +4,8 @@
 
 # 目前可用的版本在 [https://github.com/WCY-dt/SEU-I-am-Healthy](https://github.com/WCY-dt/SEU-I-am-Healthy)
 
+# 或者 [https://github.com/idawnlight/SEU_Action_Report](https://github.com/idawnlight/SEU_Action_Report)
+
 ## 支持的功能
 
 - [x] 定时上报
