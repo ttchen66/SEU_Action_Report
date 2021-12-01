@@ -1,7 +1,8 @@
 # SEU_Action_Report
 
-![Stars](https://img.shields.io/github/stars/quzard/SEU_Action_Report.svg)
-![Forks](https://img.shields.io/github/forks/quzard/SEU_Action_Report.svg)
+# 注意！原作者已删除repo，该仓库不再可用。
+
+# 目前可用的版本在 [https://github.com/WCY-dt/SEU-I-am-Healthy](https://github.com/WCY-dt/SEU-I-am-Healthy)
 
 ## 支持的功能
 
